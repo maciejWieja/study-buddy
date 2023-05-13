@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   width: 34px;
   height: 34px;
   border-radius: 50px;
-  font-weight: 700;
+  font-weight: bold;
   letter-spacing: -0.02em;
   font-size: ${({ theme }) => theme.fontSize.m};
   display: flex;

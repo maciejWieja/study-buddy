@@ -1,17 +1,66 @@
-import React from 'react';
-import UsersList from 'components/organisms/UsersList/UsersList';
+import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/globalStyle';
 import { theme } from 'assets/styles/theme';
 import { Wrapper } from './Root.style';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { users as usersData } from 'data/users';
+import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
+import AddUser from './AddUser';
+import Dashboard from './Dashboard';
 
-const Root = () => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <Wrapper>
-      <UsersList title="User's list" />
-    </Wrapper>
-  </ThemeProvider>
-);
+const initialFormState = {
+  name: '',
+  attendance: '',
+  average: '',
+};
+
+const Root = () => {
+  const [users, setUsers] = useState(usersData);
+  const [formValues, setFormValues] = useState(initialFormState);
+
+  const deleteUser = (name) => {
+    const filteredUser = users.filter((user) => user.name !== name);
+    setUsers(filteredUser);
+  };
+
+  const handleInputChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleAddUser = (e) => {
+    e.preventDefault();
+    const newUser = {
+      name: formValues.name,
+      attendance: formValues.attendance,
+      average: formValues.average,
+    };
+
+    setUsers([newUser, ...users]);
+    setFormValues(initialFormState);
+  };
+
+  return (
+    <Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <MainTemplate>
+          <Wrapper>
+            <Routes>
+              <Route
+                path="/add-user"
+                element={<AddUser formValues={formValues} handleAddUser={handleAddUser} handleInputChange={handleInputChange} />}
+              />
+              <Route path="/" element={<Dashboard deleteUser={deleteUser} users={users} />} />
+            </Routes>
+          </Wrapper>
+        </MainTemplate>
+      </ThemeProvider>
+    </Router>
+  );
+};
 
 export default Root;
