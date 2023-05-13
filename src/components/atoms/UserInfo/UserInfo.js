@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledNameParagraph, StyledAttendanceParagraph } from './UserInfo.style';
+import { StyledNameParagraph, StyledAttendanceParagraph } from './UserInfo.styles';
 
 const UserInfo = ({ name, attendance }) => (
   <div>
