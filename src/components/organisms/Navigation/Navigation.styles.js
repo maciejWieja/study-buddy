@@ -8,6 +8,8 @@ export const Wrapper = styled.nav`
   flex-direction: column;
   padding: 30px 0;
   border-right: 1px solid ${({ theme }) => theme.colors.darkPurple};
+  grid-row: 1 / 3;
+  grid-column: 1 / 1;
 `;
 
 export const StyledLogo = styled.div`

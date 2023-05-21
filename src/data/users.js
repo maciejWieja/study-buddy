@@ -29,9 +29,9 @@ export const users = [
     attendance: '65%',
     average: '2.7',
   },
-  {
-    name: 'Krystian Fopczaniak',
-    attendance: '32%',
-    average: '4.7',
-  },
+  // {
+  //   name: 'Krystian Fopczaniak',
+  //   attendance: '32%',
+  //   average: '4.7',
+  // },
 ];
