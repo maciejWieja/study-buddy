@@ -3,11 +3,9 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/globalStyle';
 import { theme } from 'assets/styles/theme';
 import { Wrapper } from './Root.style';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
-import AddUser from './AddUser';
 import Dashboard from './Dashboard';
-import UsersProvider from 'providers/UsersProvider';
 
 const Root = () => {
   return (
@@ -15,14 +13,12 @@ const Root = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
-          <UsersProvider>
-            <Wrapper>
-              <Routes>
-                <Route path="/add-user" element={<AddUser />} />
-                <Route path="/" element={<Dashboard />} />
-              </Routes>
-            </Wrapper>
-          </UsersProvider>
+          <Wrapper>
+            <Routes>
+              <Route exact path="/" element={<Navigate to="/group" />} />
+              <Route path="/group/:id?" element={<Dashboard />} />
+            </Routes>
+          </Wrapper>
         </MainTemplate>
       </ThemeProvider>
     </Router>
