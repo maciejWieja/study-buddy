@@ -12,5 +12,5 @@ export const Wrapper = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme, average }) =>
-    average > 4 ? theme.colors.success : average > 3 ? theme.colors.warning : average > 2 ? theme.colors.error : theme.colors.grey};
+    average > 4 ? theme.colors.success : average > 3 ? theme.colors.warning : average > 1 ? theme.colors.error : theme.colors.grey};
 `;
