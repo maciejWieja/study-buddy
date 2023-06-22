@@ -5,11 +5,16 @@ import StudentsList from 'components/organisms/StudentsList/StudentsList';
 import { useStudents } from 'hooks/useStudents';
 import { GroupWrapper, TitleWrapper, Wrapper } from 'views/Dashboard.styles';
 import { Title } from 'components/atoms/Title/Title';
+import useModal from 'components/organisms/Modal/useModal';
+import StudentDetails from 'components/moleculs/StudentDetails/StudentDetails';
+import Modal from 'components/organisms/Modal/Modal';
 
 const Dashboard = () => {
   const [groups, setGroups] = useState([]);
-  const { getGroups } = useStudents();
+  const [currentStudent, setCurrentStudent] = useState([]);
+  const { getGroups, getStudentById } = useStudents();
   const { id } = useParams();
+  const { isOpen, handleOpenModal, handleCloseModal } = useModal();
 
   useEffect(() => {
     (async () => {
@@ -17,6 +22,12 @@ const Dashboard = () => {
       setGroups(groups);
     })();
   }, [getGroups]);
+
+  const handleOpenStudentsDetails = async (id) => {
+    const student = await getStudentById(id);
+    setCurrentStudent(student);
+    handleOpenModal();
+  };
 
   if (!id && groups.length > 0) return <Navigate to={`/group/${groups[0]}`} />;
 
@@ -33,7 +44,10 @@ const Dashboard = () => {
         </nav>
       </TitleWrapper>
       <GroupWrapper>
-        <StudentsList />
+        <StudentsList handleOpenStudentsDetails={handleOpenStudentsDetails} />
+        <Modal isOpen={isOpen} handleClose={handleCloseModal}>
+          <StudentDetails student={currentStudent} />
+        </Modal>
       </GroupWrapper>
     </Wrapper>
   );
