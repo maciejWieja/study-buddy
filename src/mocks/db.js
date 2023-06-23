@@ -41,4 +41,10 @@ export const db = factory({
     subject: () => `${faker.company.buzzAdjective} ${faker.company.buzzNoun}`,
     date: faker.date.soon,
   },
+  teacher: {
+    id: primaryKey(() => '1'),
+    name: () => 'Jacek Sobczak',
+    login: () => 'teacher@studybuddy.com',
+    password: () => 'Test123',
+  },
 });

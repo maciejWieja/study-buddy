@@ -11,6 +11,9 @@ const Navigation = () => (
       </h1>
     </StyledLogo>
     <StyledLink to="/group">Dashboard</StyledLink>
+    <StyledLink as="a" onClick={() => localStorage.removeItem('token')}>
+      Logout
+    </StyledLink>
   </Wrapper>
 );
 
