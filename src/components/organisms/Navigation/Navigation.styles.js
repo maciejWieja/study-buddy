@@ -31,6 +31,7 @@ export const StyledLogo = styled.div`
 `;
 
 export const StyledLink = styled(NavLink)`
+  cursor: pointer;
   color: ${({ theme }) => theme.colors.darkGrey};
   text-align: right;
   font-weight: bold;
