@@ -62,7 +62,7 @@ export const useStudents = () => {
       });
       return data;
     } catch (e) {
-      dispatchError(['Failed to find students']);
+      dispatchError('Failed to find students');
     }
   };
 
