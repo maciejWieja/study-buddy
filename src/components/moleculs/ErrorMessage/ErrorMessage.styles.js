@@ -20,6 +20,7 @@ const slideAnimation = keyframes`
 `;
 
 export const Wrapper = styled.div`
+  z-index: 1000;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
