@@ -7,6 +7,7 @@
     "@faker-js/faker": "^8.0.2",
     "@mswjs/data": "^0.13.0",
     "@reduxjs/toolkit": "^1.9.5",
+    "@testing-library/cypress": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -31,6 +32,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
+    "test:e2e": "cypress open --project ./src/e2e",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -58,6 +60,8 @@
     ]
   },
   "devDependencies": {
+    "@cypress/react": "^7.0.3",
+    "@cypress/webpack-dev-server": "^3.5.0",
     "@storybook/addon-essentials": "^7.0.22",
     "@storybook/addon-interactions": "^7.0.22",
     "@storybook/addon-links": "^7.0.22",
@@ -68,7 +72,9 @@
     "@storybook/testing-library": "^0.0.14-next.2",
     "axios-mock-adapter": "^1.21.4",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "cypress": "^12.16.0",
     "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-cypress": "^2.13.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
