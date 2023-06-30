@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import debounce from 'lodash.debounce';
 import { useCombobox } from 'downshift';
 import { SearchBarWrapper, SearchResults, SearchResultsItem, SearchWrapper, StatusInfo } from 'components/organisms/SearchBar/SearchBar.styles';
-import { useStudents } from 'hooks/useStudents';
+import { useFindStudentsMutation } from 'store';
 
 export const SearchBar = () => {
   const [matchingStudents, setMatchingStudents] = useState([]);
-  const { findStudents } = useStudents();
+  const [findStudents] = useFindStudentsMutation();
 
   const getMatchingStudents = debounce(async ({ inputValue }) => {
-    const { students } = await findStudents(inputValue);
-    setMatchingStudents(students);
+    const { data } = await findStudents({ searchPhrase: inputValue });
+    setMatchingStudents(data.students);
   }, 500);
 
   const { isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
