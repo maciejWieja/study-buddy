@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from 'assets/styles/GlobalStyle';
+import { GlobalStyle } from 'assets/styles/GlobalStyles';
 import { theme } from 'assets/styles/theme';
 import { AuthProvider } from 'hooks/useAuth';
 import { ErrorProvider } from 'hooks/useError';
