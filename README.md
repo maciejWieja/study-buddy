@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Development Guide
-1. `npm install`
+1. `npm install --legacy-peer-deps`
 2. `npm start`
 
 Runs the app in the development mode.\
